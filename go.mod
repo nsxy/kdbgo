@@ -1,4 +1,4 @@
-module github.com/sv/kdbgo
+module github.com/nsxy/kdbgo
 
 go 1.14
 
