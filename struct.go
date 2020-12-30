@@ -192,11 +192,7 @@ func DateV(x []time.Time) *K {
 
 
 func TimeZ(x time.Time) *K {
-	//localEpoch := time.Date(2000, time.January, 1, 0, 0, 0, 0, time.Local)
-	//localEpoch := qEpoch.Add(time.Hour * 8)
 	diff := x.Add(time.Hour * 8).Sub(qEpoch).Seconds() / 86400
-
-	// diff := float64(x.UnixNano()-localEpoch.UnixNano()) / (float64)(864000*100000000)
 	return &K{-KZ, NONE, diff}
 }
 
