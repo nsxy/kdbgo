@@ -3,7 +3,7 @@ package kdb_test
 import (
 	"fmt"
 
-	"github.com/sv/kdbgo"
+	"github.com/nsxy/kdbgo"
 )
 
 func ExampleDialKDB() {
