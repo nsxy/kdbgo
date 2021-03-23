@@ -455,8 +455,16 @@ func UnmarshalDict(t Dict, v interface{}) error {
 		if !fv.IsValid() {
 			continue
 		}
-		if fv.CanSet() && reflect.TypeOf(val).AssignableTo(fv.Type()) {
-			fv.Set(reflect.ValueOf(val))
+		valIn := reflect.ValueOf(val)
+		valFrom := reflect.TypeOf(val)
+		typeTo := fv.Type()
+
+		if fv.CanSet() {
+			if valFrom.AssignableTo(typeTo) {
+				fv.Set(valIn)
+			} else if valFrom.ConvertibleTo(typeTo) {
+				fv.Set(valIn.Convert(typeTo))
+			}
 		}
 	}
 	return nil
